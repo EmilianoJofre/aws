@@ -1,0 +1,21 @@
+<client-index
+  :accounts="<%= SerializeUtils.map_to_json(@accounts, serializer: Api::V1::AccountSerializer, is_demo: @is_demo, deep: @deep) %> | camelizeKeys"
+  :accounts-investment-instruments="<%= SerializeUtils.map_to_json(@accountsInvestmentInstruments, serializer: Api::V1::AccountSerializer, is_demo: @is_demo, deep: @deep) %> | camelizeKeys"
+  :accounts-pension-funds="<%= SerializeUtils.map_to_json(@accountsPensionFunds, serializer: Api::V1::AccountSerializer, is_demo: @is_demo, deep: @deep) %> | camelizeKeys"
+  :accounts-real-estates="<%= SerializeUtils.map_to_json(@accountsRealEstate, serializer: Api::V1::AccountSerializer, is_demo: @is_demo, deep: @deep) %> | camelizeKeys"
+  :assets="<%= SerializeUtils.map_to_json(@assets, serializer: Api::V1::InvestmentAssetSerializer) %> | camelizeKeys"
+  :is-demo="<%= @is_demo %> | camelizeKeys"
+  :relation-id="<%= @relation.id %> | camelizeKeys"
+  :show-wallet="<%= @relation.show_wallet %> | camelizeKeys"
+  :dollar="<%= @dollar %> | camelizeKeys"
+  :euro="<%= @euro %> | camelizeKeys"
+  :uf="<%= @uf %> | camelizeKeys"
+  :mxn="<%= @mxn %> | camelizeKeys"
+  :cop="<%= @cop %> | camelizeKeys"
+  :crc="<%= @crc %> | camelizeKeys"
+  :is-user="<%= @is_user %> | camelizeKeys"
+  last-updated="<%= @last_updated %> | camelizeKeys"
+  next-chart-update="<%= @next_chart_update %>"
+  :document-type-options="<%= EnumUtils.enum_options_for_select(RelationFile, :document_type) %> | camelizeKeys"
+  internal_id= <%= @internal_id %>
+></client-index>

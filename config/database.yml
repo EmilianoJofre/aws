@@ -1,0 +1,24 @@
+development: &default
+  adapter: postgresql
+  database: <%= ENV["DB_DATABASE"] %>
+  encoding: utf8
+  host: <%= ENV["DB_HOST"] || "127.0.0.1" %>
+  port: <%= ENV["DB_PORT"] || 5432 %>
+  username: <%= ENV["DB_USER"] || 'postgres' %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  min_messages: warning
+  pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
+  reaping_frequency: <%= Integer(ENV.fetch("DB_REAPING_FREQUENCY", 10)) %>
+  timeout: 5000
+
+test:
+  <<: *default
+  database: value-list_test
+
+production: &deploy
+  adapter: postgresql
+  encoding: utf8
+  min_messages: warning
+  pool: <%= [Integer(ENV.fetch("MAX_THREADS", 5)), Integer(ENV.fetch("DB_POOL", 5))].max %>
+  timeout: 5000
+  url: <%= ENV.fetch("DATABASE_URL", "postgres://postgres:yZp63q3D6y@34.95.207.155:5432/vl-production") %>

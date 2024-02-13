@@ -1,0 +1,76 @@
+<div class='flex flex-wrap justify-center my-8'>
+  <div class="w-full">
+  <a
+    class="flex justify-center w-32 mx-auto mt-4 mb-8"
+    href="/"
+  >
+    <%= image_tag('logo.png') %>
+  </a>
+  </div>
+  <div class="w-full max-w-lg border shadow-md">
+    <div class="flex w-full max-w-lg mb-8">
+      <div class="w-1/2 leading-loose text-center font-medium <%= resource_name.to_s == 'relation' ? "bg-white text-vl-blue" : "bg-vl-gray-100 text-vl-gray-200" %>">
+        <a
+          class="flex flex-col items-center justify-center w-full h-full py-4"
+          href="<%= new_relation_session_path %>"
+        >
+          <p>Inversionista</p>
+          <div class="w-1/2 border-t-2  mx-auto <%= resource_name.to_s == 'relation' ? "border-vl-blue" : "border-vl-gray-100" %>"></div>
+        </a>
+      </div>
+      <div class="w-1/2 leading-loose text-center font-medium <%= resource_name.to_s == 'user' ? "bg-white text-vl-blue" : "bg-vl-gray-100 text-vl-gray-200" %>">
+        <a
+          class="flex flex-col items-center justify-center w-full h-full py-4"
+          href="<%= new_user_session_path %>"
+        >
+          <p>Asesor</p>
+          <div class="w-1/2 border-t-2  mx-auto <%= resource_name.to_s == 'user' ? "border-vl-blue" : "border-vl-gray-100" %>"></div>
+        </a>
+      </div>
+    </div>
+    <div class='w-full max-w-lg px-16 pt-4 pb-8 bg-white'>
+      <h1 class='mb-8 text-xl font-medium text-vl-blue'>Bienvenido</h1>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4') do |f| %>
+        <div class='mb-4'>
+          <%= f.text_field :email, autocomplete: 'email', placeholder: 'Correo electrónico', class: 'placeholder-vl-gray-200 appearance-none rounded-lg w-full py-2 px-3 text-gray-700 bg-white text-sm leading-tight focus:outline-none focus:shadow-outline border-2 border-vl-gray-200'%>
+        </div>
+        <div class='mb-4'>
+          <%= f.password_field :password, autocomplete: 'off', placeholder: 'Contraseña', class: 'placeholder-vl-gray-200 appearance-none rounded-lg w-full py-2 px-3 text-gray-700 bg-white text-sm leading-tight focus:outline-none focus:shadow-outline border-2 border-vl-gray-200' %>
+        </div>
+        <% if flash.alert %>
+        <div
+          class='relative my-3 text-sm text-red-700'
+          role="alert"
+        >
+          <ul>
+          <li><%= flash.alert %></li>
+          </ul>
+        </div>
+        <% end %>
+        <% if flash.notice %>
+        <div
+          class='relative my-3 text-sm text-green-700'
+          role="alert"
+        >
+          <ul>
+          <li><%= flash.notice %></li>
+          </ul>
+        </div>
+        <% end %>
+        <div>
+          <div class='flex justify-around mb-4'>
+            <%= f.submit 'INGRESAR', class: 'bg-white border-2 border-vl-blue hover:bg-vl-blue hover:text-white rounded-lg text-vl-blue py-2 px-4 mt-5 rounded focus:outline-none focus:shadow-outline tracking-widest text-sm' %>
+          </div>
+        </div>
+      <% end %>
+      <div class="text-sm text-center text-vl-gray-200">
+        <a
+          href=<%= recovery_password_path(resource_name.to_s) %>
+          class="hover:underline"
+        >
+          ¿Olvidaste tu contraseña?
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+es-CL:
+  active_admin:
+    price_change:
+      add_file: 'Subir archivo con precios'
+      add_file_success: 'Se estan generando los cambios de precio'
+      add_file_error: 'Ocurrió un error, archivo no compatible'
+      hints_title: Instrucciones
+      file_import_hint_1: "Descarga la <a href='/templates/price_changes.xlsx'>plantilla</a>."
+      file_import_hint_2: "Modifica el archivo cargando distintos instrumentos en la columna <b>id</b> y su precio en la columna <b>price</b>."
+      file_import_hint_3: "Selecciona el archivo modificado con el <b>Formulario de Importación</b>."
+      file_import_hint_4: "Click en el botón <b>Aceptar</b>."
+      file_import_hint_5: "(Los precios serán cargados para la fecha en la que se suba el archivo)"
+  devise:
+    password:
+      user:
+        invalid: 'Correo no es válido o no existe'
+        email_sent: Te hemos enviado las instrucciones de recuperación de contraseña.
+        email_failed: No se pudo enviar correo.
+        success_change: Se ha cambiado tu contraseña. Inicia sesión con su nueva contraseña.
+        failed_change: Hubo un error al cambiar tu contraseña.
+  activerecord:
+    attributes:
+      accounts:
+        account_type:
+          investment: "Inversiones"
+          pension_fund: "Fondos de pensión"
+          real_estate: "Bienes raices"
+          liability: "Pasivos"
+      investment_assets:
+        asset_type:
+          fixed_income: Renta fija
+          variable_income: Renta variable
+          alternative_asset: Activo alternativo
+          balanced_asset: Activo balanceado
+          structured_asset: Activo estructurado
+          forward_asset: Activo forward
+          pension_fund: Fondo de pension
+          real_estate: Bien raíz
+          vehicle: Vehículo
+          money_market: Money Market
+          liability: Pasivo
+      price_change:
+        created_at: Última actualización
+        price_changed_at: Día del precio de cierre
+      liability:
+        payment_cycle:
+          monthly: 'Mensual'
+          quarterly: 'Trimestral'
+          biannual: 'Semestral'
+          annual: 'Anual'
+          to_the_end: 'Al vencimiento'
+        rate_type:
+          fixed: 'Fija'
+          variable: 'Variable'
+          mixed: 'Mixta'
+      money_movement:
+        movement_type:
+          purchase: Compra
+          sale: Venta
+      relations:
+        all: Todas tus cuentas
+    enums:
+      relation_file:
+        document_types:
+          bank_statement: Cartola bancaria
+          bank_report: Reporte bancario
+          deed: Escritura
+          afp_statement: Cartola AFP
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u%n"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "$"
+    human:
+      decimal_units:
+       format: "%n%u"
+       units:
+         unit: ""
+         thousand: K
+         million: M
+         billion: B
+         trillion: T
+         quadrillion: Q
+    percentage:
+      format:
+        delimiter: ''
+        precision: 2
+        format: "%n%"
+  time:
+    formats:
+      date_concise: '%Y-%m-%d'
+      date_time_concise: '%Y-%m-%d %H:%m:%S %Z'
+        

@@ -1,0 +1,2 @@
+class SupervisorPolicy < ApplicationPolicy
+end

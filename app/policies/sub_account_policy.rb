@@ -1,0 +1,2 @@
+class SubAccountPolicy < ApplicationPolicy
+end

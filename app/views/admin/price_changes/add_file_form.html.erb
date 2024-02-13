@@ -1,0 +1,21 @@
+<div>
+  <h3><%= I18n.t('active_admin.price_change.hints_title') %></h3>
+  <div>
+    <ol>
+      <li><%= I18n.t('active_admin.price_change.file_import_hint_1').html_safe %></li>
+      <li>
+        <%= I18n.t('active_admin.price_change.file_import_hint_2').html_safe %>
+      </li>
+      <li><%= I18n.t('active_admin.price_change.file_import_hint_3').html_safe %></li>
+      <li><%= I18n.t('active_admin.price_change.file_import_hint_4').html_safe %></li>
+    </ol>
+    <p><%= I18n.t('active_admin.price_change.file_import_hint_5').html_safe %></p>
+  </div>
+</div>
+
+<%= semantic_form_for(:price_changes, url: add_file_admin_price_changes_path, method: :post) do |f| %>
+	<%= f.inputs I18n.t('active_admin.price_change.add_file') do %>
+		<%= f.input :file, as: :file %>
+	<% end %>
+	<%= f.actions %>
+<% end %>

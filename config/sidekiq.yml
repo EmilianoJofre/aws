@@ -1,0 +1,56 @@
+production:
+  :concurrency: 10
+:queues:
+  - [default, 2]
+  - [prices, 4]
+  - [stats, 1]
+  - [fixes, 3]
+:schedule:
+  fix_ledgerizer:
+    cron: "<%= ENV.fetch('JOB_FIX_LEDGERIZER', '0 18 * * *') %>"
+    class: FixLedgerizerJob
+    queues: fixes
+  get_dollar_prices:
+    cron: "<%= ENV.fetch('JOB_UPDATE_DOLLAR', '0 0 * * *') %>"
+    class: GetDollarPricesJob
+    queues: prices
+  get_mxn_prices:
+    cron: '<%= ENV.fetch('JOB_UPDATE_MXN', '0 0 * * *') %>'
+    class: GetMxnPricesJob
+    queues: prices
+  get_cop_prices:
+    cron: '<%= ENV.fetch('JOB_UPDATE_COP', '0 0 * * *') %>'
+    class: GetCopPricesJob
+    queues: prices
+  get_crc_prices:
+    cron: '<%= ENV.fetch('JOB_UPDATE_CRC', '0 0 * * *') %>'
+    class: GetCrcPricesJob
+    queues: prices
+  get_euro_prices:
+    cron: "<%= ENV.fetch('JOB_UPDATE_EURO', '0 0 * * *') %>"
+    class: GetEuroPricesJob
+    queues: prices
+  get_uf_prices:
+    cron: "<%= ENV.fetch('JOB_UPDATE_UF', '0 0 * * *') %>"
+    class: GetUfPricesJob
+    queues: prices
+  update_charts:
+    cron: "<%= ENV.fetch('UPDATE_CHARTS_CRON', '0 4 * * *') %>"
+    class: UpdateChartsJob
+    queues: stats
+  update_charts_simple:
+    cron: "<%= ENV.fetch('UPDATE_CHARTS_SIMPLE_CRON', '0 */6 * * *') %>"
+    class: UpdateChartsSimpleJob
+    queues: stats
+  update_charts_complex:
+    cron: "<%= ENV.fetch('UPDATE_CHARTS_COMPLEX_CRON', '0 2 * * *') %>"
+    class: UpdateChartsComplexJob
+    queues: stats
+  generate_aum:
+    cron: "<%= ENV.fetch('GENERATE_AUM_CRON', '*/10 * * * *') %>"
+    class: GenerateAumJob
+    queues: stats
+  update_balances:
+    cron: "<%= ENV.fetch('UPDATE_BALANCES_JOB', '0 * * * *') %>"
+    class: UpdateBalancesJob
+    queues: fixes

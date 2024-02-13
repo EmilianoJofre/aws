@@ -1,0 +1,6 @@
+<%= semantic_form_for(:countries, url: add_country_file_admin_investment_assets_path, method: :post) do |f| %>
+	<%= f.inputs 'Subir archivo con Paises' do %>
+		<%= f.input :file, as: :file %>
+	<% end %>
+	<%= f.actions %>
+<% end %>

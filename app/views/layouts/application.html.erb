@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render partial: '/common/tag_manager_head' %>
+    <title>Valuelist</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag 'application' %>
+  </head>
+
+  <body class="mb-12 font-sans">
+    <%= render partial: '/common/tag_manager_body' %>
+    <div
+      id="vue-app"
+    > 
+
+
+      <% if @relation && (current_user || current_relation) %>
+        
+        <snackbar v-if="this.$store.state.relationFiles.isOpenNackbar"> </snackbar>
+
+        <topbar
+          user-type="<%= current_user&.class&.name&.downcase || current_relation&.class&.name&.downcase %>"
+          user-name="
+            <%= current_relation ?
+              (current_relation&.first_name + ' ' + current_relation&.last_name) :
+              (@relation.first_name + ' ' + @relation.last_name) 
+            %>
+          "
+          initial-lastname="
+            <%= current_relation ?
+              (current_relation&.initialAndLastname) :
+              (@relation&.initialAndLastname)   
+            %>
+          "
+          dollar-price="<%= @dollar %>"
+          euro-price="<%= @euro %>"
+          uf-price="<%= @uf %>"
+          mxn-price="<%= @mxn %>"
+          cop-price="<%= @cop %>"
+          crc-price="<%= @crc %>"
+          <% if params[:id] %>
+            :relation-view="<%= current_page?(relation_path(params[:id])) %>"
+          <% end %>
+        ></topbar>
+      <% end %>
+      <% if current_user || current_relation %>
+        <navbar
+          user-type="<%= current_user&.class&.name&.downcase || current_relation&.class&.name&.downcase %>"
+          user-initials="<%= current_user&.initials&.upcase || current_relation&.initials&.upcase %>"
+          <% if params[:id] %>
+            :relation-view="<%= current_page?(relation_path(params[:id])) %>"
+          <% end %>
+        ></navbar>
+      <% end %>
+      <div class="container mx-auto">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
