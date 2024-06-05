@@ -1,6 +1,6 @@
 
-FROM node:12.22.8-alpine AS node
-FROM ruby:2.7.5-alpine
+FROM public.ecr.aws/docker/library/node:12.22.8-alpine AS node
+FROM public.ecr.aws/docker/library/ruby:2.7.5-alpine
 
 ENV BUNDLER_VERSION=2.1.4
 

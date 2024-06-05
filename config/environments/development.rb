@@ -29,4 +29,6 @@ Rails.application.configure do
   config.assets.debug = true
   config.assets.quiet = true
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.hosts << "awseb--awseb-1gsascn7krdl-53641557.us-east-1.elb.amazonaws.com"
 end
